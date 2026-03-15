@@ -1,0 +1,13 @@
+Feature,Importance
+Payment Delay,0.4389029
+Gender_Male,0.14136566
+Support Calls,0.13624988
+Tenure,0.06193354
+Usage Frequency,0.059131168
+Contract Length_Monthly,0.048783462
+Age,0.048384048
+Total Spend,0.03973002
+Contract Length_Quarterly,0.012588188
+Subscription Type_Standard,0.0062289666
+Subscription Type_Premium,0.0056623784
+Last Interaction,0.0010398257
