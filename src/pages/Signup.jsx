@@ -36,7 +36,7 @@ function Signup() {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
@@ -56,15 +56,17 @@ function Signup() {
     }
 
     setLoading(true);
-    setTimeout(() => {
-      const result = signup(name, email, password);
+    try {
+      const result = await signup(name, email, password);
       if (result.success) {
         navigate('/dashboard');
       } else {
         setError(result.message);
       }
-      setLoading(false);
-    }, 500);
+    } catch (err) {
+      setError('An unexpected error occurred. Please try again.');
+    }
+    setLoading(false);
   };
 
   return (

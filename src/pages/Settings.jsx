@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { SettingsIcon, User, Mail, LogOut, Save, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { SettingsIcon, User, Mail, LogOut, Save, ArrowLeft, CheckCircle2, AlertCircle } from 'lucide-react';
 import gsap from 'gsap';
 import './Settings.css';
 
@@ -13,6 +13,7 @@ function Settings() {
   const [name, setName] = useState(user?.name || '');
   const [email, setEmail] = useState(user?.email || '');
   const [saved, setSaved] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     if (!user) return;
@@ -39,15 +40,20 @@ function Settings() {
     return <Navigate to="/login" replace />;
   }
 
-  const handleSave = (e) => {
+  const handleSave = async (e) => {
     e.preventDefault();
-    updateUser({ name, email });
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
+    setError('');
+    try {
+      await updateUser({ name, email });
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2000);
+    } catch (err) {
+      setError(err.message || 'Failed to update profile. Please try again.');
+    }
   };
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    await logout();
     navigate('/');
   };
 
@@ -71,13 +77,20 @@ function Settings() {
         {/* Avatar */}
         <div className="settings-avatar">
           <div className="avatar-circle">
-            {user.name.charAt(0).toUpperCase()}
+            {(user.name || user.email || '?').charAt(0).toUpperCase()}
           </div>
           <div className="avatar-info">
-            <strong>{user.name}</strong>
+            <strong>{user.name || 'User'}</strong>
             <span>{user.email}</span>
           </div>
         </div>
+
+        {error && (
+          <div className="auth-error">
+            <AlertCircle size={16} />
+            <span>{error}</span>
+          </div>
+        )}
 
         <form onSubmit={handleSave} className="auth-form">
           <div className="auth-input-group">

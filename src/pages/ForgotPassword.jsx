@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { LogIn, Mail, Lock, AlertCircle, ArrowLeft } from 'lucide-react';
+import { KeyRound, Mail, AlertCircle, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import gsap from 'gsap';
 import './Login.css';
 
-function Login() {
+function ForgotPassword() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { resetPassword } = useAuth();
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
   const wrapperRef = useRef(null);
 
@@ -37,17 +37,19 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setSuccess('');
 
-    if (!email || !password) {
-      setError('Please fill in all fields.');
+    if (!email) {
+      setError('Please enter your email address.');
       return;
     }
 
     setLoading(true);
     try {
-      const result = await login(email, password);
+      const result = await resetPassword(email);
       if (result.success) {
-        navigate('/dashboard');
+        setSuccess('Password reset link sent! Check your email inbox (and spam folder).');
+        setEmail('');
       } else {
         setError(result.message);
       }
@@ -61,23 +63,30 @@ function Login() {
     <div className="auth-wrapper" ref={wrapperRef}>
       <div className="auth-bg-blob"></div>
 
-      <button className="auth-back-btn" onClick={() => navigate('/')}>
+      <button className="auth-back-btn" onClick={() => navigate('/login')}>
         <ArrowLeft size={20} />
       </button>
 
       <div className="auth-card">
         <div className="auth-header">
           <div className="auth-icon-wrapper">
-            <LogIn size={28} strokeWidth={1.6} />
+            <KeyRound size={28} strokeWidth={1.6} />
           </div>
-          <h1>Welcome Back</h1>
-          <p>Log in to your ChurnPred account</p>
+          <h1>Reset Password</h1>
+          <p>Enter your email and we'll send you a reset link</p>
         </div>
 
         {error && (
           <div className="auth-error">
             <AlertCircle size={16} />
             <span>{error}</span>
+          </div>
+        )}
+
+        {success && (
+          <div className="auth-success">
+            <CheckCircle2 size={16} />
+            <span>{success}</span>
           </div>
         )}
 
@@ -96,39 +105,21 @@ function Login() {
             </div>
           </div>
 
-          <div className="auth-input-group">
-            <label>Password</label>
-            <div className="auth-input-wrapper">
-              <Lock size={18} className="auth-input-icon" />
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
-                className="auth-input"
-              />
-            </div>
-          </div>
-
-          <div className="auth-forgot-link">
-            <Link to="/forgot-password">Forgot your password?</Link>
-          </div>
-
           <button
             type="submit"
             className={`auth-submit-btn ${loading ? 'loading' : ''}`}
             disabled={loading}
           >
-            {loading ? 'Logging in...' : 'Login'}
+            {loading ? 'Sending...' : 'Send Reset Link'}
           </button>
         </form>
 
         <p className="auth-switch">
-          Don't have an account? <Link to="/signup">Sign Up</Link>
+          Remember your password? <Link to="/login">Login</Link>
         </p>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default ForgotPassword;
