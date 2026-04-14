@@ -1,0 +1,230 @@
+{
+  "telecom": {
+    "model_type": "RandomForestClassifier",
+    "num_features": 30,
+    "feature_columns": [
+      "gender",
+      "SeniorCitizen",
+      "Partner",
+      "Dependents",
+      "tenure",
+      "PhoneService",
+      "PaperlessBilling",
+      "MonthlyCharges",
+      "TotalCharges",
+      "MultipleLines_No phone service",
+      "MultipleLines_Yes",
+      "InternetService_Fiber optic",
+      "InternetService_No",
+      "OnlineSecurity_No internet service",
+      "OnlineSecurity_Yes",
+      "OnlineBackup_No internet service",
+      "OnlineBackup_Yes",
+      "DeviceProtection_No internet service",
+      "DeviceProtection_Yes",
+      "TechSupport_No internet service",
+      "TechSupport_Yes",
+      "StreamingTV_No internet service",
+      "StreamingTV_Yes",
+      "StreamingMovies_No internet service",
+      "StreamingMovies_Yes",
+      "Contract_One year",
+      "Contract_Two year",
+      "PaymentMethod_Credit card (automatic)",
+      "PaymentMethod_Electronic check",
+      "PaymentMethod_Mailed check"
+    ],
+    "classes": [
+      0,
+      1
+    ],
+    "threshold": 0.5,
+    "proba_shape": [
+      3,
+      2
+    ],
+    "proba_zeros_col1": [
+      0.2429286831116587,
+      0.2429286831116587,
+      0.2429286831116587
+    ],
+    "proba_rand_col1": [
+      0.20158118203943254,
+      0.15371969125753435,
+      0.21786526101301
+    ],
+    "churn_rate_zeros": 0.0,
+    "churn_rate_rand": 0.0
+  },
+  "saas": {
+    "model_type": "XGBClassifier",
+    "num_features": 12,
+    "feature_columns": [
+      "Age",
+      "Tenure",
+      "Usage Frequency",
+      "Support Calls",
+      "Payment Delay",
+      "Total Spend",
+      "Last Interaction",
+      "Gender_Male",
+      "Subscription Type_Premium",
+      "Subscription Type_Standard",
+      "Contract Length_Monthly",
+      "Contract Length_Quarterly"
+    ],
+    "classes": [
+      0,
+      1
+    ],
+    "threshold": 0.34999999999999987,
+    "proba_shape": [
+      3,
+      2
+    ],
+    "proba_zeros_col1": [
+      0.9998347759246826,
+      0.9998347759246826,
+      0.9998347759246826
+    ],
+    "proba_rand_col1": [
+      0.9994893074035645,
+      0.9997113347053528,
+      0.9996941089630127
+    ],
+    "churn_rate_zeros": 100.0,
+    "churn_rate_rand": 100.0
+  },
+  "retail": {
+    "model_type": "XGBClassifier",
+    "num_features": 29,
+    "feature_columns": [
+      "Tenure",
+      "CityTier",
+      "WarehouseToHome",
+      "HourSpendOnApp",
+      "NumberOfDeviceRegistered",
+      "SatisfactionScore",
+      "NumberOfAddress",
+      "Complain",
+      "OrderAmountHikeFromlastYear",
+      "CouponUsed",
+      "OrderCount",
+      "DaySinceLastOrder",
+      "CashbackAmount",
+      "PreferredLoginDevice_Mobile Phone",
+      "PreferredLoginDevice_Phone",
+      "PreferredPaymentMode_COD",
+      "PreferredPaymentMode_Cash on Delivery",
+      "PreferredPaymentMode_Credit Card",
+      "PreferredPaymentMode_Debit Card",
+      "PreferredPaymentMode_E wallet",
+      "PreferredPaymentMode_UPI",
+      "Gender_Male",
+      "PreferedOrderCat_Grocery",
+      "PreferedOrderCat_Laptop & Accessory",
+      "PreferedOrderCat_Mobile",
+      "PreferedOrderCat_Mobile Phone",
+      "PreferedOrderCat_Others",
+      "MaritalStatus_Married",
+      "MaritalStatus_Single"
+    ],
+    "classes": [
+      0,
+      1
+    ],
+    "threshold": 0.4299999999999998,
+    "proba_shape": [
+      3,
+      2
+    ],
+    "proba_zeros_col1": [
+      0.994024932384491,
+      0.994024932384491,
+      0.994024932384491
+    ],
+    "proba_rand_col1": [
+      0.8493602275848389,
+      0.788741946220398,
+      0.8080775737762451
+    ],
+    "churn_rate_zeros": 100.0,
+    "churn_rate_rand": 100.0
+  },
+  "finance": {
+    "model_type": "XGBClassifier",
+    "num_features": 11,
+    "feature_columns": [
+      "CreditScore",
+      "Gender",
+      "Age",
+      "Tenure",
+      "Balance",
+      "NumOfProducts",
+      "HasCrCard",
+      "IsActiveMember",
+      "EstimatedSalary",
+      "Geography_Germany",
+      "Geography_Spain"
+    ],
+    "classes": [
+      0,
+      1
+    ],
+    "threshold": 0.8299999999999996,
+    "proba_shape": [
+      3,
+      2
+    ],
+    "proba_zeros_col1": [
+      0.5297588109970093,
+      0.5297588109970093,
+      0.5297588109970093
+    ],
+    "proba_rand_col1": [
+      0.9569117426872253,
+      0.968238353729248,
+      0.9794293642044067
+    ],
+    "churn_rate_zeros": 0.0,
+    "churn_rate_rand": 100.0
+  },
+  "healthcare": {
+    "model_type": "XGBClassifier",
+    "num_features": 11,
+    "feature_columns": [
+      "Claim Amount",
+      "Category Premium",
+      "Premium/Amount Ratio",
+      "BMI",
+      "Claim Reason_Other",
+      "Claim Reason_Phone",
+      "Claim Reason_Travel",
+      "Data confidentiality_Low",
+      "Data confidentiality_Medium",
+      "Data confidentiality_Very low",
+      "Claim Request output_Yes"
+    ],
+    "classes": [
+      0,
+      1
+    ],
+    "threshold": 0.1,
+    "proba_shape": [
+      3,
+      2
+    ],
+    "proba_zeros_col1": [
+      0.9995607733726501,
+      0.9995607733726501,
+      0.9995607733726501
+    ],
+    "proba_rand_col1": [
+      0.0004391577385831624,
+      0.9995611310005188,
+      0.9995612502098083
+    ],
+    "churn_rate_zeros": 100.0,
+    "churn_rate_rand": 66.66666666666666
+  }
+}

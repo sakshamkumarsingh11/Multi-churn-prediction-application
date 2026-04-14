@@ -1,8 +1,4 @@
-# ============================================================
-#   ChurnSense - Flask Backend
-#   File: app.py
-#   Run: python app.py
-# ============================================================
+
 
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -24,7 +20,7 @@ MODEL_CONFIG = {
         'model'     : os.path.join(MODELS_DIR, 'telecom', 'telecom_churn_model.pkl'),
         'columns'   : os.path.join(MODELS_DIR, 'telecom', 'telecom_feature_columns.pkl'),
         'scaler'    : None,  # not available
-        'threshold' : None,  # not available — will use 0.5
+        'threshold' : os.path.join(MODELS_DIR, 'telecom', 'telecom_best_threshold.pkl'),
         'label'     : 'Telecommunications',
     },
     'saas': {
@@ -74,10 +70,22 @@ def load_model_assets(service):
     return model, columns, scaler, threshold
 
 # ── Risk classification ───────────────────────────────────
-def assign_risk(prob):
-    if prob < 0.35:   return 'Low'
-    elif prob < 0.65: return 'Medium'
-    else:             return 'High'
+# Risk is relative to the model's threshold so it works across
+# models with very different probability ranges.
+def assign_risk(prob, threshold=0.5):
+    if prob >= threshold:
+        # Above decision boundary — how far above?
+        headroom = 1.0 - threshold
+        if headroom > 0 and (prob - threshold) / headroom >= 0.35:
+            return 'High'
+        else:
+            return 'Medium'
+    else:
+        # Below decision boundary — how far below?
+        if threshold > 0 and (threshold - prob) / threshold >= 0.50:
+            return 'Low'
+        else:
+            return 'Medium'
 
 # ── Retention suggestion per service and risk ─────────────
 SUGGESTIONS = {
@@ -270,14 +278,23 @@ def predict(service):
         probs = model.predict_proba(df_processed)[:, 1]
         preds = (probs >= threshold).astype(int)
 
+        # ── Debug logging ──
+        print(f"[DEBUG] Service: {service}")
+        print(f"[DEBUG] Threshold: {threshold}")
+        print(f"[DEBUG] Prob min={probs.min():.4f}  max={probs.max():.4f}  mean={probs.mean():.4f}")
+        print(f"[DEBUG] Predictions sum={preds.sum()}/{len(preds)}")
+
         # ── Risk classification ──
-        risks       = [assign_risk(p) for p in probs]
+        risks       = [assign_risk(p, threshold) for p in probs]
         suggestions = [get_suggestion(service, r) for r in risks]
 
         high_count   = int(sum(1 for r in risks if r == 'High'))
         medium_count = int(sum(1 for r in risks if r == 'Medium'))
         low_count    = int(sum(1 for r in risks if r == 'Low'))
         churn_rate   = float(preds.mean() * 100)
+
+        print(f"[DEBUG] Risk counts: High={high_count}, Medium={medium_count}, Low={low_count}")
+        print(f"[DEBUG] Churn rate: {churn_rate:.1f}%")
 
         # ── Per-customer table (first 200 rows max for UI) ──
         customer_rows = []

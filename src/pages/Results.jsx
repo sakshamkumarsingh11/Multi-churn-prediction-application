@@ -233,7 +233,7 @@ function Results() {
                   </svg>
                   <div className="donut-center-label">
                     <span className="donut-pct" style={{ color: RISK_COLORS.High }}>
-                      {churnRateValue ? churnRateValue.toFixed(1) : overallChurnRate}%
+                      {churnRateValue != null ? churnRateValue.toFixed(1) : overallChurnRate}%
                     </span>
                     <span className="donut-sub">Churn Risk</span>
                   </div>

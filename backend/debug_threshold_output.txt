@@ -1,0 +1,43 @@
+Telecom probabilities vs actual labels:
+  Customer 7590-VHVEG: prob=0.3039, actual=0, risk=Low
+  Customer 5575-GNVDE: prob=0.1654, actual=0, risk=Low
+  Customer 3668-QPYBK: prob=0.1673, actual=1, risk=Low
+  Customer 7795-CFOCW: prob=0.1796, actual=0, risk=Low
+  Customer 9237-HQITU: prob=0.3522, actual=1, risk=Medium
+  Customer 9305-CDSKC: prob=0.4026, actual=1, risk=Medium
+  Customer 1452-KIOVK: prob=0.3233, actual=0, risk=Low
+  Customer 6713-OKOMC: prob=0.1950, actual=0, risk=Low
+  Customer 7892-POOKP: prob=0.4295, actual=1, risk=Medium
+  Customer 6388-TABTU: prob=0.0845, actual=0, risk=Low
+  Customer 9763-GRSKD: prob=0.1692, actual=0, risk=Low
+  Customer 7469-LKBCI: prob=0.0479, actual=0, risk=Low
+  Customer 8091-TTVAX: prob=0.3027, actual=0, risk=Low
+  Customer 0280-XJGEX: prob=0.4600, actual=0, risk=Medium
+  Customer 5129-JLPIS: prob=0.3111, actual=1, risk=Low
+  Customer 3655-SNQYZ: prob=0.0308, actual=0, risk=Low
+  Customer 8879-MKJQH: prob=0.1244, actual=0, risk=Low
+  Customer 0731-MJYAX: prob=0.3644, actual=1, risk=Medium
+  Customer 6858-ENOQX: prob=0.1953, actual=1, risk=Low
+  Customer 3186-AJIEC: prob=0.1185, actual=1, risk=Low
+
+Prob distribution:
+  Min: 0.0308
+  Max: 0.4600
+  Mean: 0.2364
+  Median: 0.1952
+
+Probs for actual churners: [0.16730119884179367, 0.352241504157196, 0.40257901814139474, 0.42954953070760415, 0.3111433854520035, 0.36438053417882693, 0.1953486094510892, 0.1185227490301642]
+Probs for actual non-churners: [0.30386438701171054, 0.16538277500757373, 0.17957970364029088, 0.3233078068654758, 0.19502508697355483, 0.08454755949189684, 0.1692295382542031, 0.04786166003474203, 0.3026555521702548, 0.46003172705464224, 0.030768932818725975, 0.12441066375478829]
+Mean prob churners: 0.2926
+Mean prob non-churners: 0.1989
+
+Optimal threshold (F1): 0.31 (F1=0.667)
+Current threshold: 0.5
+  threshold=0.10: churn_rate=85.0%, predictions=[1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1]
+  threshold=0.15: churn_rate=75.0%, predictions=[1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0]
+  threshold=0.20: churn_rate=45.0%, predictions=[1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0]
+  threshold=0.25: churn_rate=45.0%, predictions=[1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0]
+  threshold=0.30: churn_rate=45.0%, predictions=[1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0]
+  threshold=0.35: churn_rate=25.0%, predictions=[0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0]
+  threshold=0.40: churn_rate=15.0%, predictions=[0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+  threshold=0.50: churn_rate=0.0%, predictions=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]

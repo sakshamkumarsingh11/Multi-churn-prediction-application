@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Settings, Zap, Target, BarChart3, Shield, Link2, Brain, Rocket, Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
-import dashboardImg from '../assets/dashboard-mockup.png';
+import AnimatedBackground from '../components/backgrounds/AnimatedBackground';
 import './Home.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -93,14 +93,13 @@ function Home() {
       /* Hero entrance */
       const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
       heroTl
-        .from('.hero-left h1', { opacity: 0, y: 50, duration: 0.8 })
-        .from('.hero-left p', { opacity: 0, y: 30, duration: 0.7 }, '-=0.4')
+        .from('.hero-title', { opacity: 0, y: 50, duration: 0.8 })
+        .from('.hero-tagline', { opacity: 0, y: 30, duration: 0.7 }, '-=0.4')
         .fromTo(getStartedBtnRef.current,
           { opacity: 0, y: 30, scale: 0.9 },
           { opacity: 1, y: 0, scale: 1, duration: 0.8 },
           '-=0.3'
-        )
-        .from('.hero-dashboard-img', { opacity: 0, x: 80, duration: 1 }, '-=0.6');
+        );
 
       /* Trust section */
       gsap.from('.trust-section .section-content h2', {
@@ -157,9 +156,9 @@ function Home() {
       <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${navHidden ? 'nav-hidden' : ''}`} ref={navRef}>
         <div className="nav-logo">
           <Zap size={20} className="nav-logo-icon" />
-          <span>ChurnPredict</span>
+          <span>ChurnSense</span>
         </div>
-        <ul className="nav-links">
+        <ul className="nav-links-center">
           {sections.map(section => (
             <li key={section}>
               <button className="nav-btn" onClick={() => scrollToSection(section)}>
@@ -168,39 +167,34 @@ function Home() {
               </button>
             </li>
           ))}
-
-          {/* Auth buttons */}
+        </ul>
+        <div className="nav-auth">
           {user ? (
-            <li>
-              <button className="nav-btn nav-auth-btn nav-settings-btn" onClick={() => navigate('/settings')}>
-                <Settings size={16} />
-                <span>Settings</span>
-              </button>
-            </li>
+            <button className="nav-btn nav-auth-btn nav-settings-btn" onClick={() => navigate('/settings')}>
+              <Settings size={16} />
+              <span>Settings</span>
+            </button>
           ) : (
             <>
-              <li>
-                <button className="nav-btn nav-auth-btn nav-login-text-btn" onClick={() => navigate('/login')}>
-                  Login
-                  <span className="nav-btn-underline"></span>
-                </button>
-              </li>
-              <li>
-                <button className="nav-btn nav-auth-btn nav-signup-btn" onClick={() => navigate('/signup')}>
-                  Sign Up
-                </button>
-              </li>
+              <button className="nav-btn nav-auth-btn nav-login-text-btn" onClick={() => navigate('/login')}>
+                Login
+                <span className="nav-btn-underline"></span>
+              </button>
+              <button className="nav-btn nav-auth-btn nav-signup-btn" onClick={() => navigate('/signup')}>
+                Sign Up
+              </button>
             </>
           )}
-        </ul>
+        </div>
       </nav>
 
       {/* Hero Section */}
       <section id="home" className="hero-section" ref={heroRef}>
+        <AnimatedBackground />
         <div className="hero-content container">
-          <div className="hero-left">
-            <h1>Predict and Prevent Customer <span className="text-accent">Churn</span> with AI</h1>
-            <p>Unlock powerful insights and proactive retention strategies to keep your customers engaged and growing. Start knowing.</p>
+          <div className="hero-center">
+            <h1 className="hero-title">Churn<span className="text-accent">Sense</span></h1>
+            <p className="hero-tagline">Predict <span className="text-accent">Churn</span> before it happens — across every industry.</p>
             <div
               className="get-started-magnetic-area"
               onMouseMove={handleBtnAreaMove}
@@ -216,9 +210,6 @@ function Home() {
                 <ArrowRight size={18} className="btn-arrow" />
               </button>
             </div>
-          </div>
-          <div className="hero-right">
-            <img src={dashboardImg} alt="ChurnPredict AI Dashboard" className="hero-dashboard-img" />
           </div>
         </div>
       </section>

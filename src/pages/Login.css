@@ -9,7 +9,7 @@
   padding: 40px 20px;
   position: relative;
   overflow: hidden;
-  background: #e8efed;
+  background: var(--bg-primary);
 }
 
 /* Teal organic blob shapes */
@@ -24,7 +24,7 @@
 .auth-wrapper::before {
   width: 500px;
   height: 500px;
-  background: rgba(15, 118, 110, 0.12);
+  background: rgba(20, 184, 166, 0.08);
   top: -120px;
   right: -80px;
   border-radius: 40% 60% 65% 35% / 55% 45% 55% 45%;
@@ -33,7 +33,7 @@
 .auth-wrapper::after {
   width: 450px;
   height: 450px;
-  background: rgba(15, 118, 110, 0.10);
+  background: rgba(20, 184, 166, 0.06);
   bottom: -100px;
   left: -60px;
   border-radius: 55% 45% 50% 50% / 40% 60% 40% 60%;
@@ -44,7 +44,7 @@
   position: absolute;
   width: 350px;
   height: 350px;
-  background: rgba(15, 118, 110, 0.08);
+  background: rgba(20, 184, 166, 0.05);
   border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
   top: 50%;
   right: -40px;
@@ -68,7 +68,7 @@
   z-index: 20;
   color: var(--text-primary);
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .auth-back-btn:hover {
@@ -83,12 +83,12 @@
   padding: 48px 42px;
   position: relative;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(18, 18, 30, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--border-color);
   border-radius: 24px;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
 }
 
 /* Header */
@@ -101,7 +101,7 @@
   width: 56px;
   height: 56px;
   border-radius: 16px;
-  background: var(--text-primary);
+  background: var(--accent-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -205,7 +205,7 @@
   width: 100%;
   padding: 14px 16px 14px 46px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--accent-primary);
   color: var(--text-primary);
   font-family: var(--font-body);
@@ -216,7 +216,7 @@
 
 .auth-input:focus {
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.1);
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
 }
 
 .auth-input::placeholder {
@@ -226,7 +226,7 @@
 /* Submit Button */
 .auth-submit-btn {
   margin-top: 8px;
-  background: var(--text-primary);
+  background: var(--accent-primary);
   color: #ffffff;
   padding: 15px;
   border-radius: 14px;

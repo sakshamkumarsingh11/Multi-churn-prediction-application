@@ -1,0 +1,49 @@
+=== FINANCE (Banking) TEST ===
+Processed shape: (5, 11)
+Expected columns: ['CreditScore', 'Gender', 'Age', 'Tenure', 'Balance', 'NumOfProducts', 'HasCrCard', 'IsActiveMember', 'EstimatedSalary', 'Geography_Germany', 'Geography_Spain']
+Processed columns: ['CreditScore', 'Gender', 'Age', 'Tenure', 'Balance', 'NumOfProducts', 'HasCrCard', 'IsActiveMember', 'EstimatedSalary', 'Geography_Germany', 'Geography_Spain']
+Processed values:
+   CreditScore  Gender  Age  Tenure    Balance  NumOfProducts  HasCrCard  IsActiveMember  EstimatedSalary  Geography_Germany  Geography_Spain
+0          619       0   42       2       0.00              1          1               1        101348.88                  0                0
+1          608       1   41       1   83807.86              1          0               1        112542.58                  0                1
+2          502       0   42       8  159660.80              3          1               0        113931.57                  0                0
+3          699       0   39       1       0.00              2          0               0         93826.63                  0                0
+4          850       0   43       2  125510.82              1          1               1         79084.10                  0                1
+Probabilities: [0.5538076162338257, 0.9555909037590027, 0.9152355790138245, 0.9504114389419556, 0.798129677772522]
+Threshold: 0.8299999999999996
+Predictions: [0, 1, 1, 1, 0]
+Risks: ['Medium', 'High', 'High', 'High', 'High']
+Churn rate: 60.0%
+
+=== TELECOM TEST ===
+Processed shape: (5, 30)
+Expected columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'PaperlessBilling', 'MonthlyCharges', 'TotalCharges', 'MultipleLines_No phone service', 'MultipleLines_Yes', 'InternetService_Fiber optic', 'InternetService_No', 'OnlineSecurity_No internet service', 'OnlineSecurity_Yes', 'OnlineBackup_No internet service', 'OnlineBackup_Yes', 'DeviceProtection_No internet service', 'DeviceProtection_Yes', 'TechSupport_No internet service', 'TechSupport_Yes', 'StreamingTV_No internet service', 'StreamingTV_Yes', 'StreamingMovies_No internet service', 'StreamingMovies_Yes', 'Contract_One year', 'Contract_Two year', 'PaymentMethod_Credit card (automatic)', 'PaymentMethod_Electronic check', 'PaymentMethod_Mailed check']
+Processed columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'PaperlessBilling', 'MonthlyCharges', 'TotalCharges', 'MultipleLines_No phone service', 'MultipleLines_Yes', 'InternetService_Fiber optic', 'InternetService_No', 'OnlineSecurity_No internet service', 'OnlineSecurity_Yes', 'OnlineBackup_No internet service', 'OnlineBackup_Yes', 'DeviceProtection_No internet service', 'DeviceProtection_Yes', 'TechSupport_No internet service', 'TechSupport_Yes', 'StreamingTV_No internet service', 'StreamingTV_Yes', 'StreamingMovies_No internet service', 'StreamingMovies_Yes', 'Contract_One year', 'Contract_Two year', 'PaymentMethod_Credit card (automatic)', 'PaymentMethod_Electronic check', 'PaymentMethod_Mailed check']
+Processed values:
+   gender  SeniorCitizen  Partner  Dependents  tenure  PhoneService  PaperlessBilling  MonthlyCharges  TotalCharges  MultipleLines_No phone service  MultipleLines_Yes  InternetService_Fiber optic  InternetService_No  OnlineSecurity_No internet service  OnlineSecurity_Yes  OnlineBackup_No internet service  OnlineBackup_Yes  DeviceProtection_No internet service  DeviceProtection_Yes  TechSupport_No internet service  TechSupport_Yes  StreamingTV_No internet service  StreamingTV_Yes  StreamingMovies_No internet service  StreamingMovies_Yes  Contract_One year  Contract_Two year  PaymentMethod_Credit card (automatic)  PaymentMethod_Electronic check  PaymentMethod_Mailed check
+0       0              0        1           0       1             0                 1           29.85         29.85                               1                  0                            0                   0                                   0                   0                                 0                 1                                     0                     0                                0                0                                0                0                                    0                    0                  0                  0                                      0                               1                           0
+1       1              0        0           0      34             1                 0           56.95       1889.50                               0                  0                            0                   0                                   0                   1                                 0                 0                                     0                     1                                0                0                                0                0                                    0                    0                  1                  0                                      0                               0                           1
+2       1              0        0           0       2             1                 1           53.85        108.15                               0                  0                            0                   0                                   0                   1                                 0                 1                                     0                     0                                0                0                                0                0                                    0                    0                  0                  0                                      0                               0                           1
+3       1              0        0           0      45             0                 0           42.30       1840.75                               1                  0                            0                   0                                   0                   1                                 0                 0                                     0                     1                                0                1                                0                0                                    0                    0                  1                  0                                      0                               0                           0
+4       0              0        0           0       2             1                 1           70.70        151.65                               0                  0                            1                   0                                   0                   0                                 0                 0                                     0                     0                                0                0                                0                0                                    0                    0                  0                  0                                      0                               1                           0
+Probabilities: [0.30386438701171054, 0.16538277500757373, 0.16730119884179367, 0.1795797036402909, 0.3522415041571962]
+Threshold: 0.5
+Predictions: [0, 0, 0, 0, 0]
+Risks: ['Low', 'Low', 'Low', 'Low', 'Medium']
+Churn rate: 0.0%
+
+=== SAAS TEST ===
+Processed shape: (5, 12)
+Expected columns: ['Age', 'Tenure', 'Usage Frequency', 'Support Calls', 'Payment Delay', 'Total Spend', 'Last Interaction', 'Gender_Male', 'Subscription Type_Premium', 'Subscription Type_Standard', 'Contract Length_Monthly', 'Contract Length_Quarterly']
+Processed values:
+        Age    Tenure  Usage Frequency  Support Calls  Payment Delay  Total Spend  Last Interaction  Gender_Male  Subscription Type_Premium  Subscription Type_Standard  Contract Length_Monthly  Contract Length_Quarterly
+0  0.576598 -1.052446        -0.916500      -1.734336       0.549703    -0.417918         -1.331137            0                          0                           0                        0                          0
+1 -0.859688 -1.695792        -0.349375       0.192458      -0.692934     1.249562          1.099878            0                          0                           1                        1                          0
+2 -0.356988 -0.175156        -0.122526      -1.413204      -0.805901     1.395227         -0.868086            0                          1                           0                        0                          0
+3  0.935670 -1.461848        -1.029925      -0.449807      -0.241066    -0.099755          0.173777            0                          0                           1                        0                          1
+4 -1.434202 -1.812764        -1.256775       0.834723       0.323769    -1.265074          1.447165            0                          0                           0                        1                          0
+Probabilities: [0.9989292025566101, 1.835477632994298e-05, 2.8181491984469176e-07, 3.3902629184012767e-06, 0.09843721985816956]
+Threshold: 0.34999999999999987
+Predictions: [1, 0, 0, 0, 0]
+Risks: ['High', 'Low', 'Low', 'Low', 'Low']
+Churn rate: 20.0%
